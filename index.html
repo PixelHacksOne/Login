@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shop Minecraft</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: url('https://i.postimg.cc/0NJt73MW/d7e1208192e8b2391d238e460630328a.jpg') no-repeat center center fixed;
+      background-size: cover;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 40px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      width: 300px;
+    }
+
+    h1 {
+      color: white;
+      font-size: 32px;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px #00ffcc;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      font-size: 16px;
+      outline: none;
+    }
+
+    ::placeholder {
+      color: #eee;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      background: #00cc99;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background: #009977;
+    }
+
+    /* Link style */
+    .register-link {
+      color: #00cc99;
+      text-decoration: none;
+      font-size: 14px;
+      margin-top: 10px;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .register-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 10;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(4px);
+      background: rgba(0, 0, 0, 0.3);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 30px;
+      border-radius: 20px;
+      width: 320px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    }
+
+    .modal-content h2 {
+      color: white;
+      margin-bottom: 20px;
+      font-size: 26px;
+      text-shadow: 0 0 8px #00ffcc;
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 32px;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* Success message */
+    .success-message {
+      display: none;
+      background: rgba(0, 204, 153, 0.9);
+      color: white;
+      font-size: 16px;
+      padding: 10px;
+      margin-top: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 204, 153, 0.5);
+      text-align: center;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Shop Minecraft</h1>
+    <input type="text" id="username" placeholder="Usuario" />
+    <input type="password" id="password" placeholder="Contraseña" />
+    <button onclick="iniciarSesion()">Iniciar Sesión</button>
+    <a class="register-link" onclick="abrirModal()">¿No tienes cuenta? Registrate</a>
+    <div id="successMessage" class="success-message">¡Cuenta registrada con éxito! Ahora puedes iniciar sesión.</div>
+  </div>
+
+  <div id="registroModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="cerrarModal()">&times;</span>
+      <h2>Crear Cuenta</h2>
+      <input type="text" id="newUsername" placeholder="Nombre de Usuario" />
+      <input type="password" id="newPassword" placeholder="Contraseña" />
+      <button onclick="registrarCuenta()">Registrarme</button>
+    </div>
+  </div>
+
+  <script>
+    function abrirModal() {
+      document.getElementById("registroModal").style.display = "flex";
+    }
+
+    function cerrarModal() {
+      document.getElementById("registroModal").style.display = "none";
+    }
+
+    // Cierra el modal si se hace clic fuera del contenido
+    window.onclick = function(e) {
+      const modal = document.getElementById("registroModal");
+      if (e.target === modal) {
+        cerrarModal();
+      }
+    }
+
+    function registrarCuenta() {
+      const newUsername = document.getElementById('newUsername').value;
+      const newPassword = document.getElementById('newPassword').value;
+
+      if (newUsername && newPassword) {
+        // Guardar en localStorage
+        localStorage.setItem('username', newUsername);
+        localStorage.setItem('password', newPassword);
+
+        // Mostrar el mensaje de éxito
+        document.getElementById('successMessage').style.display = 'block';
+
+        // Cerrar el modal después de un breve retraso
+        setTimeout(function() {
+          cerrarModal();
+          document.getElementById('successMessage').style.display = 'none';
+        }, 3000); // Mostrar el mensaje por 3 segundos
+      } else {
+        alert("Por favor, complete todos los campos.");
+      }
+    }
+
+    function iniciarSesion() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      const storedUsername = localStorage.getItem('username');
+      const storedPassword = localStorage.getItem('password');
+
+      if (username === storedUsername && password === storedPassword) {
+        window.location.href = "https://pixelhacksone.github.io/MC/";
+      } else {
+        alert("Usuario o contraseña incorrectos.");
+      }
+    }
+  </script>
+</body>
+</html>
