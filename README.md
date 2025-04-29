@@ -1,30 +1,34 @@
-# XConnetCursos
+# Shop Minecraft
 
-**XConnetCursos** es una plataforma web de venta de métodos digitales de plataformas como PayPal, Shein, Amazon, Aliexpress, Remitly y Walmart. Los pagos se realizan mediante Bitcoin para garantizar anonimato y rapidez.
+Bienvenido al proyecto **Shop Minecraft**. Esta es una página web sencilla de inicio de sesión y registro para un sistema de Minecraft, donde los usuarios pueden registrarse, iniciar sesión y acceder a un enlace específico de la página.
+
+## Descripción
+
+El proyecto **Shop Minecraft** permite a los usuarios registrarse con un nombre de usuario, correo electrónico y contraseña. Una vez registrados, pueden iniciar sesión y acceder a la página principal de Minecraft en el siguiente enlace:
+
+[https://pixelhacksone.github.io/MC/](https://pixelhacksone.github.io/MC/)
+
+La página está diseñada de manera simple y moderna, utilizando tecnologías web como **HTML**, **CSS** y **JavaScript**. Además, los datos del usuario se almacenan en el **localStorage** para permitir el acceso sin necesidad de una base de datos en el servidor.
 
 ## Características
 
-- Interfaz oscura (negro con azul) atractiva y moderna.
-- Métodos disponibles con precios en dólares.
-- Código QR personalizado para pagos en BTC.
-- Saldo del usuario visible en la parte superior.
-- Botón de verificación tras depósito en BTC.
-- Mensajes automáticos al intentar comprar sin saldo.
-- Ventana flotante con información de pago.
+- **Diseño Responsivo:** La interfaz de usuario es completamente adaptable a diferentes tamaños de pantalla.
+- **Modal de Registro:** Los usuarios pueden registrarse en un modal de forma sencilla.
+- **Almacenamiento Local:** Los datos de usuario se almacenan en el navegador utilizando `localStorage`.
+- **Estilo Moderno y Transparente:** El diseño cuenta con efectos de transparencia y sombras suaves para un toque visual atractivo.
 
-## Cómo usar
+## Tecnologías Usadas
 
-1. El usuario debe escanear el código QR o copiar la dirección BTC:  
-   `bc1q8d2phc0a2azxh2q7m56fjyn2jde0qdz8sjx5aj`
-2. Enviar el monto deseado en BTC.
-3. Hacer clic en "Verificar" para intentar reflejar el saldo.
-4. Al tener saldo suficiente, seleccionar el método deseado.
+- **HTML5**: Para la estructura básica de la página.
+- **CSS3**: Para el diseño y estilo visual.
+- **JavaScript**: Para la interactividad (modal, almacenamiento en localStorage, etc.).
+- **localStorage**: Para guardar los datos de los usuarios y permitir el inicio de sesión persistente.
 
-## Contacto
+## Instrucciones de Instalación
 
-Para soporte o más información:  
-**Telegram**: [@WConnet](https://t.me/WConnet)
+### 1. Clona el repositorio
 
----
+Para comenzar a trabajar con este proyecto, clona el repositorio en tu máquina local utilizando Git:
 
-**Nota:** Este sitio es un proyecto con fines demostrativos y educativos.
+```bash
+git clone https://github.com/tu-usuario/shop-minecraft.git
